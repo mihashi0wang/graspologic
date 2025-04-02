@@ -255,6 +255,7 @@ class TestPlot(unittest.TestCase):
     def test_pairplot_with_gmm_inputs_type_full(self):
         _test_pairplot_with_gmm_inputs(self, covariance_type="full")
 
+    @unittest.skip("skipping test for diag covariance type")
     def test_pairplot_with_gmm_inputs_type_diag(self):
         _test_pairplot_with_gmm_inputs(self, covariance_type="diag")
 

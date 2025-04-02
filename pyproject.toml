@@ -31,20 +31,19 @@ exclude = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9,<3.13"
+python = "^3.9,<3.14"
 anytree = "^2.12.1"
 beartype = "^0.18.5"
-gensim = "^4.3.3"
 graspologic-native = "^1.2.1"
 hyppo = "^0.4.0"
 joblib = "^1.4.2"
 matplotlib = "^3.8.4"
 networkx = "^3"
-numpy = "^1.26.4"
+numpy = "^2.0.0"
 POT = "^0.9"
 seaborn = "^0.13.2"
 scikit-learn = "^1.4.2"
-scipy = "1.12.0"
+scipy = "^1.12.0"
 statsmodels = "^0.14.2"
 typing-extensions = "^4.4.0"
 umap-learn = "^0.5.6"
@@ -67,36 +66,8 @@ poethepoet = "^0.26.1"
 ruff = "^0.4.4"
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
-build-backend = "poetry_dynamic_versioning.backend"
-
-[tool.poetry-dynamic-versioning]
-enable = true
-style = "pep440"
-vcs = "git"
-bump = true
-format-jinja = """
-    {%- if distance == 0 -%}
-        {{ serialize_pep440(base, stage, revision) }}
-    {%- else -%}
-        {{ serialize_pep440(base, stage, revision, dev=distance) }}
-    {%- endif -%}
-"""
-[tool.poetry-dynamic-versioning.files."graspologic/version.py"]
-persistent-substitution = true
-initial-content-jinja = """
-# This version placeholder will be replaced during package build.
-# Do not commit this file.
-__version__ = {%- if distance == 0 -%}
-    "{{ serialize_pep440(base, stage, revision) }}"
-{%- else -%}
-    "{{ serialize_pep440(base, stage, revision, dev=distance) }}"
-{%- endif -%}
-#
-#
-def __version() -> str:
-    return __version__
-"""
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api" 
 
 [tool.poe.tasks]
 _sort_imports = "ruff check --select I --fix . --preview"

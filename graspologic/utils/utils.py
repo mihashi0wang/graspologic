@@ -75,7 +75,7 @@ def import_graph(
     networkx.Graph, numpy.array
     """
     if isinstance(graph, (nx.Graph, nx.DiGraph, nx.MultiGraph, nx.MultiDiGraph)):
-        out = nx.to_numpy_array(graph, nodelist=sorted(graph.nodes), dtype=np.float_)
+        out = nx.to_numpy_array(graph, nodelist=sorted(graph.nodes), dtype=np.float64)
     elif isinstance(graph, (np.ndarray, np.memmap, csr_array)):
         shape = graph.shape
         if len(shape) > 3:
@@ -189,7 +189,7 @@ def import_edgelist(
     vertices = np.sort(reduce(np.union1d, [G.nodes for G in graphs]))
     for g in graphs:
         g.add_nodes_from(vertices)
-    out = [nx.to_numpy_array(G, nodelist=vertices, dtype=np.float_) for G in graphs]
+    out = [nx.to_numpy_array(G, nodelist=vertices, dtype=np.float64) for G in graphs]
 
     # only return adjacency matrix if input is only 1 graph
     if len(out) == 1:
