@@ -3128,17 +3128,6 @@ files = [
 ]
 
 [[package]]
-name = "umap"
-version = "0.1.1"
-description = "UNIST synthesis MAP solution"
-optional = false
-python-versions = "*"
-groups = ["main"]
-files = [
-    {file = "umap-0.1.1.tar.gz", hash = "sha256:5d08c1a335cc7ee175811a99dc9356d3d4b8567ad082e2b1b205198cf27c4256"},
-]
-
-[[package]]
 name = "umap-learn"
 version = "0.5.6"
 description = "Uniform Manifold Approximation and Projection"
@@ -3208,4 +3197,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10,<3.14"
-content-hash = "51dec82ddfdec683b69962d8208efa7fea1b8e2bb3a0130b680505c7ee263263"
+content-hash = "dcc14a9de8ca4bb7f67a978c27a3e75511a5fa6eae6a81325451d0707f2c9ef4"

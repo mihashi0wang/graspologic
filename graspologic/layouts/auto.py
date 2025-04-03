@@ -8,7 +8,7 @@ from typing import Any, Optional, Sequence
 
 import networkx as nx
 import numpy as np
-import umap
+from umap import umap_ as umap
 from sklearn.manifold import TSNE
 
 from graspologic.types import Dict, List, Tuple
