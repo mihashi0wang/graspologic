@@ -1,17 +1,9 @@
 name: graspologic Build
 on:
   push:
-    paths-ignore:
-      - '.all-contributorsrc'
-      - 'CONTRIBUTORS.md'
-    branches-ignore:
-      - 'dev'
-      - 'main'
+    branches: [ main ]
   pull_request:
-    paths-ignore:
-      - '.all-contributorsrc'
-      - 'CONTRIBUTORS.md'
-  workflow_call:
+    branches: [ main ]
 
 env:
   PYTHON_VERSION: '3.10'
