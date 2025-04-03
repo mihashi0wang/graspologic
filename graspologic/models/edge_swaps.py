@@ -57,7 +57,7 @@ class EdgeSwapper:
 
         max_seed = np.iinfo(np.uint32).max
         if seed is None:
-            seed = np.random.randint(max_seed, dtype=np.int64)
+            seed = np.random.randint(max_seed, dtype=np.int64).astype(int)
         seed = check_scalar(
             seed, "seed", (int, np.integer), min_val=0, max_val=max_seed
         )
