@@ -64,7 +64,7 @@ jobs:
       - name: Install gensim from mihashi0wang in Linux 
         if:  runner.os == 'Linux'
         run: |
-          export PYTHON_VERSION_NO_DOT=$(echo ${{ matrix.python }} | sed 's/\.//')
+          export PYTHON_VERSION_NO_DOT=$(echo ${{ matrix.python_version }} | sed 's/\.//')
           echo $PYTHON_VERSION_NO_DOT
           export GENSIM_WHL="gensim-4.3.3.1-cp${PYTHON_VERSION_NO_DOT}-cp${PYTHON_VERSION_NO_DOT}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
           wget https://github.com/mihashi0wang/gensim/releases/download/4.3.3.1/${GENSIM_WHL}
@@ -72,7 +72,7 @@ jobs:
       - name: Install gensim from mihashi0wang in Windows
         if: runner.os == 'Windows'
         run: |
-          $PYTHON_VERSION_NO_DOT = "${{ matrix.python }}".Replace('.', '')
+          $PYTHON_VERSION_NO_DOT = "${{ matrix.python_version }}".Replace('.', '')
           Write-Host "PYTHON_VERSION_NO_DOT: $PYTHON_VERSION_NO_DOT"
           $GENSIM_WHL = "gensim-4.3.3.1-cp${PYTHON_VERSION_NO_DOT}-cp${PYTHON_VERSION_NO_DOT}-win_amd64.whl"
           pip install ${GENSIM_WHL}
