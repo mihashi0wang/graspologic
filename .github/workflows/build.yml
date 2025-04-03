@@ -69,7 +69,7 @@ jobs:
           $PYTHON_VERSION_NO_DOT = "${{ matrix.python_version }}".Replace('.', '')
           Write-Host "PYTHON_VERSION_NO_DOT: $PYTHON_VERSION_NO_DOT"
           $GENSIM_WHL = "gensim-4.3.3.1-cp${PYTHON_VERSION_NO_DOT}-cp${PYTHON_VERSION_NO_DOT}-win_amd64.whl"
-          Invoke-WebRequest -Uri 'https://github.com/mihashi0wang/gensim/releases/download/4.3.3.1/%GENSIM_WHL%' -OutFile '%GENSIM_WHL%'
+          curl -o %GENSIM_WHL% https://github.com/mihashi0wang/gensim/releases/download/4.3.3.1/%GENSIM_WHL%
           pip install ${GENSIM_WHL}
       - name: Install Poetry
         uses: abatilo/actions-poetry@v3.0.0
