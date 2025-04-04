@@ -1,3 +1,12 @@
+mihashi0wang/graspologic 
+==================================
+
+[![Build Status](https://github.com/mihashi0wang/graspologic/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/mihashi0wang/graspologic/actions)
+[![GitHub release](https://img.shields.io/github/release/mihashi0wang/graspologic.svg)](https://github.com/mihashi0wang/graspologic/releases)
+
+Provide users with modernized dependency support while maintaining functional consistency with the original project.
+
+
 <!-- omit in toc -->
 # graspologic
 [![Paper shield](https://img.shields.io/badge/JMLR-Paper-red)](http://www.jmlr.org/papers/volume20/19-490/19-490.pdf)
