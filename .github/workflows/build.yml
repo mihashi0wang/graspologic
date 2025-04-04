@@ -7,7 +7,7 @@ on:
 
 env:
   PYTHON_VERSION: '3.10'
-  POETRY_VERSION: '1.8.3'
+  POETRY_VERSION: '2.1.2'
 
 jobs:
   code-format-check:
