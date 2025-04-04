@@ -36,7 +36,6 @@ def _test_pairplot_with_gmm_inputs(caller: unittest.TestCase, **kws):
         pairplot_with_gmm(X, gmm=None)
 
 
-@unittest.skip("This test is too slow.")
 def _test_pairplot_with_gmm_outputs(**kws):
     X = np.random.rand(15, 3)
     gmm = GaussianMixture(n_components=3, **kws).fit(X)
