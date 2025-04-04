@@ -139,3 +139,27 @@ jobs:
           name: dependencies-${{matrix.python_version}}-${{matrix.os}}
           path: |
             dependencies_${{matrix.python_version}}_${{matrix.os}}.txt
+
+build wheel:
+  runs-on: ubuntu-22.04
+  needs: [code-format-check, test-coverage, unit-and-doc-test]
+  steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+    - name: Install Poetry
+      uses: abatilo/actions-poetry@v3.0.0
+      with:
+        poetry-version: $POETRY_VERSION
+    - name: Install dependencies
+      run: poetry install
+    - name: Build Artifacts
+      run: poetry build -f wheel
+    - name: Upload wheels as artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: graspologic-${{ matrix.os }}
+        path: dist/*.whl
