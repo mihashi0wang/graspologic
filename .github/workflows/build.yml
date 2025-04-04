@@ -28,7 +28,7 @@ jobs:
           echo $PYTHON_VERSION_NO_DOT
           export GENSIM_WHL="gensim-4.3.3.1-cp${PYTHON_VERSION_NO_DOT}-cp${PYTHON_VERSION_NO_DOT}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
           wget https://github.com/mihashi0wang/gensim/releases/download/4.3.3.1/${GENSIM_WHL}
-          pipx install ${GENSIM_WHL}
+          poetry add ${GENSIM_WHL}
       - name: Install dependencies
         run: poetry install
       - name: Run Format Check
@@ -51,7 +51,7 @@ jobs:
           echo $PYTHON_VERSION_NO_DOT
           export GENSIM_WHL="gensim-4.3.3.1-cp${PYTHON_VERSION_NO_DOT}-cp${PYTHON_VERSION_NO_DOT}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
           wget https://github.com/mihashi0wang/gensim/releases/download/4.3.3.1/${GENSIM_WHL}
-          pipx install ${GENSIM_WHL}
+          poetry add ${GENSIM_WHL}
       - name: Install dependencies
         run: poetry install
       - name: Run Test Coverage
