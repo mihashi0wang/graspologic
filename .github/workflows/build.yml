@@ -161,5 +161,5 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: graspologic-${{ matrix.os }}
+          name: graspologic-py3
           path: dist/*.whl
