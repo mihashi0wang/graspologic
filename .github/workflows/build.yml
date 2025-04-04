@@ -104,24 +104,25 @@ jobs:
       - name: Install gensim from mihashi0wang in Windows
         if: runner.os == 'Windows'
         run: |
-          :: 提取 Python 版本号并去掉小数点
-          set "PYTHON_VERSION_NO_DOT=%${{ matrix.python_version }}:.=%"
-          echo %PYTHON_VERSION_NO_DOT%
+          # 提取 Python 版本号并去掉小数点
+          $PYTHON_VERSION_NO_DOT = "${{ matrix.python_version }}".Replace(".", "")
+          Write-Host "Python version without dot: $PYTHON_VERSION_NO_DOT"
 
-          :: 构造文件名
-          set "GENSIM_WHL=gensim-4.3.3.1-cp%PYTHON_VERSION_NO_DOT%-cp%PYTHON_VERSION_NO_DOT%-win_amd64.whl"
+          # 构造文件名
+          $GENSIM_WHL = "gensim-4.3.3.1-cp$PYTHON_VERSION_NO_DOT-cp$PYTHON_VERSION_NO_DOT-win_amd64.whl"
 
-          :: 下载文件
-          curl -o %GENSIM_WHL% https://github.com/mihashi0wang/gensim/releases/download/4.3.3.1/%GENSIM_WHL%
+          # 使用 PowerShell 下载文件
+          $url = "https://github.com/mihashi0wang/gensim/releases/download/4.3.3.1/$GENSIM_WHL"
+          Invoke-WebRequest -Uri $url -OutFile $GENSIM_WHL
 
-          :: 检查文件是否存在
-          if exist "%GENSIM_WHL%" (
-              :: 添加到 Poetry 项目
-              poetry add .\%GENSIM_WHL%
-          ) else (
-              echo Error: Failed to download %GENSIM_WHL%
-              exit /b 1
-          )
+          # 检查文件是否存在
+          if (Test-Path $GENSIM_WHL) {
+              # 添加到 Poetry 项目
+              poetry add .\$GENSIM_WHL
+          } else {
+              Write-Error "Failed to download $GENSIM_WHL"
+              exit 1
+          }
       - name: Run Unit Tests and Doctests Python ${{matrix.python_version}} ${{matrix.os}}
         run: poetry run poe tests
       - name: Run mypy type check Python ${{matrix.python_version}} ${{matrix.os}}
