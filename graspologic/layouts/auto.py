@@ -8,8 +8,8 @@ from typing import Any, Optional, Sequence
 
 import networkx as nx
 import numpy as np
-from umap import umap_ as umap
 from sklearn.manifold import TSNE
+from umap import umap_ as umap
 
 from graspologic.types import Dict, List, Tuple
 
@@ -22,7 +22,6 @@ from .classes import NodePosition
 from .nooverlap import remove_overlaps
 
 logger = logging.getLogger(__name__)
-
 
 # automatically generates a layout by running node2vec over the graph and down
 # projecting the embedding into 2d space via umap or tsne
