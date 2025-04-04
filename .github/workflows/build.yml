@@ -57,7 +57,13 @@ jobs:
           echo $PYTHON_VERSION_NO_DOT
           export GENSIM_WHL="gensim-4.3.3.1-cp${PYTHON_VERSION_NO_DOT}-cp${PYTHON_VERSION_NO_DOT}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
           wget https://github.com/mihashi0wang/gensim/releases/download/4.3.3.1/${GENSIM_WHL}
-          poetry add ${GENSIM_WHL}
+          if [ -f "${GENSIM_WHL}" ]; then
+              # 添加到 Poetry 项目
+              poetry add ./${GENSIM_WHL}
+          else
+              echo "Error: Failed to download ${GENSIM_WHL}"
+              exit 1
+          fi
       - name: Install dependencies
         run: poetry install
       - name: Run Test Coverage
@@ -82,7 +88,13 @@ jobs:
           echo $PYTHON_VERSION_NO_DOT
           export GENSIM_WHL="gensim-4.3.3.1-cp${PYTHON_VERSION_NO_DOT}-cp${PYTHON_VERSION_NO_DOT}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
           wget https://github.com/mihashi0wang/gensim/releases/download/4.3.3.1/${GENSIM_WHL}
-          poetry add ${GENSIM_WHL}
+          if [ -f "${GENSIM_WHL}" ]; then
+              # 添加到 Poetry 项目
+              poetry add ./${GENSIM_WHL}
+          else
+              echo "Error: Failed to download ${GENSIM_WHL}"
+              exit 1
+          fi
       - name: Install gensim from mihashi0wang in Windows
         if: runner.os == 'Windows'
         run: |
