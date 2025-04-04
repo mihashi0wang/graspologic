@@ -22,21 +22,12 @@ jobs:
         uses: abatilo/actions-poetry@v3.0.0
         with:
           poetry-version: $POETRY_VERSION
-      - name: Install gensim from mihashi0wang in Linux 
-        if:  runner.os == 'Linux'
+      - name: Install gensim from mihashi0wang 
         run: |
-          export PYTHON_VERSION_NO_DOT=$(echo ${{ matrix.python_version }} | sed 's/\.//')
+          export PYTHON_VERSION_NO_DOT=$(echo ${{ env.PYTHON_VERSION  }} | sed 's/\.//')
           echo $PYTHON_VERSION_NO_DOT
           export GENSIM_WHL="gensim-4.3.3.1-cp${PYTHON_VERSION_NO_DOT}-cp${PYTHON_VERSION_NO_DOT}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
           wget https://github.com/mihashi0wang/gensim/releases/download/4.3.3.1/${GENSIM_WHL}
-          pip install ${GENSIM_WHL}
-      - name: Install gensim from mihashi0wang in Windows
-        if: runner.os == 'Windows'
-        run: |
-          $PYTHON_VERSION_NO_DOT = "${{ matrix.python_version }}".Replace('.', '')
-          Write-Host "PYTHON_VERSION_NO_DOT: $PYTHON_VERSION_NO_DOT"
-          $GENSIM_WHL = "gensim-4.3.3.1-cp${PYTHON_VERSION_NO_DOT}-cp${PYTHON_VERSION_NO_DOT}-win_amd64.whl"
-          curl -o %GENSIM_WHL% https://github.com/mihashi0wang/gensim/releases/download/4.3.3.1/%GENSIM_WHL%
           pip install ${GENSIM_WHL}
       - name: Install dependencies
         run: poetry install
@@ -54,21 +45,12 @@ jobs:
         uses: abatilo/actions-poetry@v3.0.0
         with:
           poetry-version: $POETRY_VERSION
-      - name: Install gensim from mihashi0wang in Linux 
-        if:  runner.os == 'Linux'
+      - name: Install gensim from mihashi0wang 
         run: |
-          export PYTHON_VERSION_NO_DOT=$(echo ${{ matrix.python_version }} | sed 's/\.//')
+          export PYTHON_VERSION_NO_DOT=$(echo ${{ env.PYTHON_VERSION }} | sed 's/\.//')
           echo $PYTHON_VERSION_NO_DOT
           export GENSIM_WHL="gensim-4.3.3.1-cp${PYTHON_VERSION_NO_DOT}-cp${PYTHON_VERSION_NO_DOT}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
           wget https://github.com/mihashi0wang/gensim/releases/download/4.3.3.1/${GENSIM_WHL}
-          pip install ${GENSIM_WHL}
-      - name: Install gensim from mihashi0wang in Windows
-        if: runner.os == 'Windows'
-        run: |
-          $PYTHON_VERSION_NO_DOT = "${{ matrix.python_version }}".Replace('.', '')
-          Write-Host "PYTHON_VERSION_NO_DOT: $PYTHON_VERSION_NO_DOT"
-          $GENSIM_WHL = "gensim-4.3.3.1-cp${PYTHON_VERSION_NO_DOT}-cp${PYTHON_VERSION_NO_DOT}-win_amd64.whl"
-          curl -o %GENSIM_WHL% https://github.com/mihashi0wang/gensim/releases/download/4.3.3.1/%GENSIM_WHL%
           pip install ${GENSIM_WHL}
       - name: Install dependencies
         run: poetry install
